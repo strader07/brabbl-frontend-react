@@ -1,0 +1,296 @@
+.barometer {
+  position: relative;
+  height: 60px;
+  margin-bottom: 30px;
+  margin-top: 3px;
+  font-size: 1.07em;
+
+  .barometer-label {
+    display: block;
+    font-size: 0.9em;
+    height: 16px;
+  }
+
+  .barometer-number {
+    display: block;
+    font-size: 1.8em;
+    font-weight: normal;
+    margin-top: 5px;
+
+    i {
+      font-size: 85%;
+    }
+  }
+
+  .barometer-num-votes,
+  .barometer-rating-total {
+    position: absolute;
+    display: block;
+    color: $dark-grey;
+    z-index: 5;
+  }
+
+  .barometer-num-votes {
+      right: 0;
+      text-align: right;
+  }
+
+  .barometer-rating-total {
+      left: 0;
+  }
+
+  .barometer-number-symbol-avg {
+    padding-left: 2px;
+  }
+
+  .barometer-slider-container {
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 22px;
+    margin: 0;
+    z-index: 10;
+  }
+
+  .barometer-slider {
+    height: 26px;
+    background: linear-gradient(to right, $bar-negative1 0%, $bar-negative2 50%, $bar-positive2 0%, $bar-positive1 100%);
+    cursor: pointer;
+
+    .bar {
+      position: relative;
+    }
+  }
+
+  .barometer-zero-mark {
+    position: absolute;
+    font-size: 0.5em;
+    text-align: center;
+    background-color: $dark-grey;
+    color: white;
+    cursor: pointer;
+    width: 2px;
+    height: 29px;
+    top: -2px;
+    left: 50%;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .handle {
+    z-index: 5 !important;
+    transition: left 0.3s;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .handle-text {
+      position: absolute;
+      top: 33px;
+      left: -12px;
+      z-index: 5;
+      color: $white;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      width: 25px;
+    }
+
+    &:after {
+      content: " ";
+      display: block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50% 50% 50% 0;
+      background: $base-color;
+      position: absolute;
+      transform: rotate(135deg);
+      top: 28px;
+      margin-left: -15px;
+    }
+  }
+
+  .barometer-slider-container.not-active {
+    .handle {
+      &:hover {
+        cursor: default;
+      }
+      &:after {
+        background: $dark-grey;
+      }
+
+    }
+
+    .barometer-slider {
+        cursor: default;
+      }
+  }
+
+  .barometer-slider-mask-1,
+  .barometer-slider-mask-2 {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: $barometer-background-color;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .barometer-slider-mask-1 {
+    right: 0;
+
+    &.neg {
+      left: 0;
+      right: auto;
+    }
+  }
+
+  .barometer-slider-mask-2 {
+    left: 0;
+    width: 50%;
+
+    &.neg {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .barometer-hint-container {
+    position: absolute;
+    top: -106px;
+    width: 150px;
+    height: 100px;
+    margin-left: -75px;
+    z-index: 5;
+    text-align: center;
+
+    .barometer-hint {
+      position: relative;
+      top: 100%;
+      transform: translateY(-100%);
+      display: inline-block;
+      padding: 5px 8px;
+      background-color: $black;
+      color: $white;
+      border-radius: 3px;
+      @include tooltip-arrow($black, 5px);
+    }
+  }
+
+  .barometer-seperator {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    bottom: 0;
+    z-index: 3;
+  }
+
+  .barometer-start-sign {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: 30px;
+    border: 1px solid $medium-grey;
+    padding: 3px 10px 3px 5px;
+    color: $base-color;
+    height: 24px;
+    line-height: 17px;
+    border-radius: 0 5px 5px 0;
+    white-space: nowrap;
+    display: none;
+    p {
+      margin: 0;
+    }
+
+    &.show {
+      display: block;
+    }
+
+    // Triangle on left side
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      border-left: 0;
+    }
+    &:before {
+      top: -1px;
+      left: -12px;
+      border-right-color: $medium-grey;
+      border-width: 12px;
+    }
+    &:after {
+      top: -1px;
+      left: -11px;
+      border-right-color: #fff;
+      border-width: 12px;
+    }
+  }
+}
+
+.discussion-list-item-barometer .barometer {
+  height: 20px;
+  margin-bottom: 0;
+
+  .barometer-label {
+    display: none;
+  }
+
+  .barometer-number {
+    font-size: 1.35em;
+    top: -1px;
+    margin-top: -2px;
+  }
+
+  .barometer-slider {
+    height: 18px;
+    cursor: default;
+  }
+
+  .barometer-zero-mark {
+    height: 21px;
+  }
+
+  .barometer-slider-container {
+    top: 0;
+  }
+
+  .handle {
+
+    .handle-text {
+      position: absolute;
+      top: 22px;
+      left: -6px;
+      z-index: 5;
+      color: $white;
+      font-size: 11px;
+      font-weight: bold;
+      text-align: center;
+      width: 14px;
+    }
+
+    &:after {
+      content: " ";
+      display: block;
+      width: 18px;
+      height: 18px;
+      border-radius: 50% 50% 50% 0;
+      background: $base-color;
+      position: absolute;
+      transform: rotate(135deg);
+      top: 22px;
+      margin-left: -8px;
+    }
+  }
+}
+
+.discussion-list-item-barometer.no-handle {
+  .handle {
+    display: none;
+  }
+}

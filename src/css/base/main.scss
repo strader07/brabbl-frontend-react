@@ -1,0 +1,20 @@
+@import 'variables';
+@import 'colors';
+@import 'mixins';
+@import 'modules/modal';
+
+#brabbl-widget,
+.ReactModal__Overlay {
+  @import 'normalize';
+  @import 'base';
+  @import 'modules/barometer';
+  @import 'modules/discussion';
+  @import 'modules/discussion-list';
+  @import 'modules/arguments';
+  @import 'modules/forms';
+  @import 'modules/star-ratings';
+  @import 'modules/toggle';
+  @import 'modules/messages';
+  @import 'modules/dropdown';
+  @import 'modules/tags';
+}
